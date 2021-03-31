@@ -41,6 +41,18 @@ limitations under the License.
     <maven>3.3.9</maven>
   </prerequisites>
 
+  <!-- <dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>libraries-bom</artifactId>
+      <version>19.2.1</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>  -->
+
   <dependencies>
     <!-- Compile/runtime dependencies -->
     <dependency>

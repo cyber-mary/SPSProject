@@ -93,4 +93,8 @@ version = "1.0-SNAPSHOT"        // Version in generated output
 
 sourceCompatibility = 1.8     // App Engine Flexible uses Java 8
 targetCompatibility = 1.8     // App Engine Flexible uses Java 8
+
+implementation platform('com.google.cloud:libraries-bom:19.2.1')
+
+compile 'com.google.cloud:google-cloud-datastore'
 // [END gradle]
