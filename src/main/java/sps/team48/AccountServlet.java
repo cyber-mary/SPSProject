@@ -59,9 +59,9 @@ public class AccountServlet extends HttpServlet {
                 PropertyFilter.eq("email", emailValue)))
             .build();
 
-         QueryResults<Entity> account = accountStore.run(query);
-         //Does this if statement work? need to test it 
-        if(account != null){
+        QueryResults<Entity> account = accountStore.run(query);
+    
+        if(account.equals(null)){
             response.setContentType("text/html;");
             response.getWriter().println("Error: Already account with that email. Use a different email or reset your password");
          } else{
