@@ -5,3 +5,4 @@ function validatePassword() {
     confirm_password.setCustomValidity('');
   }
 }
+

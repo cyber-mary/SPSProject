@@ -7,21 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-        function validatePassword() {
-            if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
-                confirm_password.setCustomValidity("Passwords Don't Match");
-            } else {
-                confirm_password.setCustomValidity('');
-            }
-        }
-    </script>
+    <script src="js/register.js"></script>
     </style>
 </head>
 
 <body>
     <div class="container centered-form">
-        <h2 style="margin-bottom: 20px;"><b>Welcome to {NAME}! Let's begin by collecting some information. (1/2)</b>
+        <h2 style="margin-bottom: 20px;"><b>Welcome to FamCheck! Let's begin by collecting some information. (1/2)</b>
         </h2>
         <form action="/account-handler" method="post">
             <div class="form-group form-container">
@@ -56,6 +48,7 @@
                         <input type="number" min="0" max="120" name="age" class="form-control" required>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="form-group col-5">
                         <label>Have you caught COVID before?</label>
