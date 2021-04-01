@@ -1,29 +1,88 @@
-<h2>Sign Up</h2>
-<form action="/account-handler" method="post">
-    <div class="form-group">
-        <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="name" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Confirm Password</label>
-            <input type="password" name="confirm_password" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit">
-            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-        </div>
-        <p>Already have an account? <a href="login.html">Login here</a>.</p>
-</form>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Create an account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function validatePassword() {
+            if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+    </script>
+    </style>
+</head>
+
+<body>
+    <div class="container centered-form">
+        <h2 style="margin-bottom: 20px;"><b>Welcome to {NAME}! Let's begin by collecting some information. (1/2)</b>
+        </h2>
+        <form action="/account-handler" method="post">
+            <div class="form-group form-container">
+                <div class="row">
+                    <div class=" form-group col" style="width: 30%;">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group col" style="width: 30%;">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" id="password"
+                            onkeyup="validatePassword();" required>
+                    </div>
+                    <div class="form-group col" style="width: 30%;">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control" id="confirm_password"
+                            onkeyup="validatePassword();" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-5">
+                        <label>First Name</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group col-5">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" class="form-control" required>
+                    </div>
+                    <div class="form-group col-2">
+                        <label>Age</label>
+                        <input type="number" min="0" max="120" name="age" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <label>Have you caught COVID before?</label>
+                        <select name="caught_covid" class="form-control" required>
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="True">Yes</option>
+                            <option value="False">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-5">
+                        <label>Vaccination Status</label>
+                        <select name="vaccination" class="form-control" required>
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="unvaccinated">Unvaccinated</option>
+                            <option value="one_dose">First dose taken</option>
+                            <option value="all_doses">Both doses taken</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                </div>
+                <p>Already have an account? <a href="login.html">Login here</a>.</p>
+        </form>
+    </div>
+</body>
+
+</html>

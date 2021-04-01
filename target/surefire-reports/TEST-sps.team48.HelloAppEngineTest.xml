@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="sps.team48.HelloAppEngineTest" time="0.438" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="sps.team48.HelloAppEngineTest" time="0.401" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.9.1+1-post-Debian-1deb10u2"/>
@@ -60,6 +60,6 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="sps.team48.HelloAppEngineTest" name="doGet_writesResponse" time="0.434"/>
-  <testcase classname="sps.team48.HelloAppEngineTest" name="HelloInfo_test" time="0.004"/>
+  <testcase classname="sps.team48.HelloAppEngineTest" name="doGet_writesResponse" time="0.395"/>
+  <testcase classname="sps.team48.HelloAppEngineTest" name="HelloInfo_test" time="0.006"/>
 </testsuite>
