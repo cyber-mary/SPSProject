@@ -38,45 +38,34 @@ import com.google.datastore.v1.TransactionOptions;
 import com.google.datastore.v1.TransactionOptions.ReadOnly;
 import com.google.cloud.datastore.DatastoreOptions;
 
-@WebServlet("/account-handler")
-public class AccountServlet extends HttpServlet {
+@WebServlet("/login-handler")
+public class LoginServlet extends HttpServlet {
 
   @Override
     public void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         //get input + clean it
-        String firstNameValue = Jsoup.clean(request.getParameter("name"), Whitelist.none());
-        String lastNameValue = Jsoup.clean(request.getParameter("last_name"), Whitelist.none());
         String emailValue = Jsoup.clean(request.getParameter("email"), Whitelist.none());
         String passwordValue = Jsoup.clean(request.getParameter("password"), Whitelist.none());
-       
-        Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
- 
-        KeyFactory keyFactory = accountStore.newKeyFactory().setKind("Account");
 
+        Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
+
+        //build query 
         Query<Entity> query = Query.newEntityQueryBuilder()
             .setKind("Account")
             .setFilter(CompositeFilter.and(
-                PropertyFilter.eq("email", emailValue)))
+                PropertyFilter.eq("email", emailValue), PropertyFilter.eq("password", passwordValue)))
             .build();
-
-         QueryResults<Entity> account = accountStore.run(query);
-         //Does this if statement work? need to test it 
-        if(account != null){
+        //store queries - should only be one acc due to structure of AccountServlet
+        QueryResults<Entity> account = accountStore.run(query);
+        
+        //Does this if statement work? need to test it 
+        if(account == null){
             response.setContentType("text/html;");
-            response.getWriter().println("Error: Already account with that email. Use a different email or reset your password");
-         } else{
-            //create entity and store it 
-            FullEntity contactEntity =
-            Entity.newBuilder(keyFactory.newKey())
-                .set("first name", firstNameValue)
-                .set("family", lastNameValue)
-                .set("email", emailValue)
-                .set("password", passwordValue)
-                .build();
-            accountStore.put(contactEntity);
-            //redirect 
+            response.getWriter().println("Error: Password or email is incorrect");
+        } else{
+            //redirect to newsfeed page
             response.sendRedirect("welcome.html");
         }
 
-  }
+    }
 }
