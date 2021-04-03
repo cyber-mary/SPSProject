@@ -22,7 +22,6 @@ import com.google.cloud.datastore.DatastoreOptions;
 
 @WebServlet("/account-handler")
 public class AccountServlet extends HttpServlet {
-
     @Override
     public void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         // Parse input + clean it
@@ -49,23 +48,13 @@ public class AccountServlet extends HttpServlet {
             .build();
 
         QueryResults<Entity> account = accountStore.run(query);
-<<<<<<< HEAD
 
         System.out.println(account);
-
-        // Does this if statement work? need to test it 
-        // if(account.f != null){
-        //     response.setContentType("text/html;");
-        //     response.getWriter().println("Error: Already account with that email. Use a different email or reset your password\n");
-        //     // response.getWriter().println(data);
-        // } else {
-=======
     
         if(account.equals(null)){
             response.setContentType("text/html;");
             response.getWriter().println("Error: Already account with that email. Use a different email or reset your password");
-         } else{
->>>>>>> fb0038f0a17ebbaa09751efe53f9ed093f4fc535
+         } else {
             //create entity and store it 
             FullEntity contactEntity =
             Entity.newBuilder(keyFactory.newKey())
@@ -80,6 +69,6 @@ public class AccountServlet extends HttpServlet {
             accountStore.put(contactEntity);
             //redirect 
             response.sendRedirect("welcome.html");
-        // }
+        }
     }
 }
