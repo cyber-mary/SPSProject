@@ -31,14 +31,14 @@ public class AccountServlet extends HttpServlet {
         String firstNameValue = Jsoup.clean(request.getParameter("first_name"), Whitelist.none());
         String lastNameValue = Jsoup.clean(request.getParameter("last_name"), Whitelist.none());
         String ageValue = Jsoup.clean(request.getParameter("age"), Whitelist.none());
-        String caughtCovidValue = Jsoup.clean(request.getParameter("caught_covid"), Whitelist.none());
+        boolean caughtCovidValue = Boolean.parseBoolean(Jsoup.clean(request.getParameter("caught_covid"), Whitelist.none()));
         String vaccinationStatusValue = Jsoup.clean(request.getParameter("vaccination_status"), Whitelist.none());
         String passwordValue = Jsoup.clean(request.getParameter("password"), Whitelist.none());
-      
+
         System.out.println("Instantiate DataStore");
         // Instantiate DataStore Objects
         Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
- 
+
         KeyFactory keyFactory = accountStore.newKeyFactory().setKind("Account");
 
         System.out.println("Query");
@@ -52,7 +52,7 @@ public class AccountServlet extends HttpServlet {
 
         System.out.println(account);
 
-         //Does this if statement work? need to test it 
+        // Does this if statement work? need to test it 
         // if(account.f != null){
         //     response.setContentType("text/html;");
         //     response.getWriter().println("Error: Already account with that email. Use a different email or reset your password\n");
@@ -65,6 +65,9 @@ public class AccountServlet extends HttpServlet {
                 .set("family", lastNameValue)
                 .set("email", emailValue)
                 .set("password", passwordValue)
+                .set("age", ageValue)
+                .set("caught covid", caughtCovidValue)
+                .set("vaccination status", vaccinationStatusValue)
                 .build();
             accountStore.put(contactEntity);
             //redirect 
