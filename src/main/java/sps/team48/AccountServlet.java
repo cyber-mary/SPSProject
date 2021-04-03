@@ -52,12 +52,11 @@ public class AccountServlet extends HttpServlet {
 
         System.out.println(account);
 
-         //Does this if statement work? need to test it 
-        // if(account.f != null){
-        //     response.setContentType("text/html;");
-        //     response.getWriter().println("Error: Already account with that email. Use a different email or reset your password\n");
-        //     // response.getWriter().println(data);
-        // } else {
+        if(!account.equals(null)){
+            response.setContentType("text/html;");
+            response.getWriter().println("Error: Already account with that email");
+            // response.getWriter().println(data);
+        } else {
             //create entity and store it 
             FullEntity contactEntity =
             Entity.newBuilder(keyFactory.newKey())
@@ -68,7 +67,7 @@ public class AccountServlet extends HttpServlet {
                 .build();
             accountStore.put(contactEntity);
             //redirect 
-            response.sendRedirect("welcome.html");
-        // }
+            response.sendRedirect("registerpt2.html");
+        }
     }
 }

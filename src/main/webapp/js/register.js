@@ -1,3 +1,9 @@
+//bootstrap JS code to enable button collapse
+var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+var collapseList = collapseElementList.map(function (collapseEl) {
+  return new bootstrap.Collapse(collapseEl)
+})
+
 function init() {
   const form = document.querySelector('form');
   form.addEventListener('submit', handleSubmit);

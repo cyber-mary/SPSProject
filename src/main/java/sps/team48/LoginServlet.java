@@ -58,8 +58,8 @@ public class LoginServlet extends HttpServlet {
         //store queries - should only be one acc due to structure of AccountServlet
         QueryResults<Entity> account = accountStore.run(query);
         
-        //Does this if statement work? need to test it 
-        if(account == null){
+    
+        if(account.equals(null)){
             response.setContentType("text/html;");
             response.getWriter().println("Error: Password or email is incorrect");
         } else{
