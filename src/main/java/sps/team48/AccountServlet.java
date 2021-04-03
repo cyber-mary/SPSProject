@@ -34,10 +34,11 @@ public class AccountServlet extends HttpServlet {
         String caughtCovidValue = Jsoup.clean(request.getParameter("caught_covid"), Whitelist.none());
         String vaccinationStatusValue = Jsoup.clean(request.getParameter("vaccination_status"), Whitelist.none());
         String passwordValue = Jsoup.clean(request.getParameter("password"), Whitelist.none());
-
+      
         System.out.println("Instantiate DataStore");
         // Instantiate DataStore Objects
         Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
+ 
         KeyFactory keyFactory = accountStore.newKeyFactory().setKind("Account");
 
         System.out.println("Query");
