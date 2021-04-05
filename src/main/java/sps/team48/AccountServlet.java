@@ -53,12 +53,11 @@ public class AccountServlet extends HttpServlet {
         QueryResults<Entity> account = accountStore.run(query);
 
         System.out.println(account);
-    
-        if(account.equals(null)){
+        if(!account.equals(null)){
             response.setContentType("text/html;");
-            response.getWriter().println("Error: Already account with that email. Use a different email or reset your password");
-         } else {
-            //create entity and store it 
+            response.getWriter().println("Error: Already account with that email");
+            // response.getWriter().println(data);
+        } else {
             FullEntity contactEntity =
             Entity.newBuilder(keyFactory.newKey())
                 .set("first name", firstNameValue)
@@ -71,7 +70,7 @@ public class AccountServlet extends HttpServlet {
                 .build();
             accountStore.put(contactEntity);
             //redirect 
-            response.sendRedirect("welcome.html");
+            response.sendRedirect("register-family.html");
         }
     }
 }

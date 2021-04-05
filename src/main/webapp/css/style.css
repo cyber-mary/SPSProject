@@ -12,3 +12,11 @@ body {
   justify-content: space-between;
   margin: 0;
 }
+.content{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.choices{
+    padding-bottom: 50px;
+}
