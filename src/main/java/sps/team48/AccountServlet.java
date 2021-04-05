@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.PathElement;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.EntityQuery;
 import com.google.cloud.datastore.FullEntity;
@@ -38,7 +39,9 @@ public class AccountServlet extends HttpServlet {
         // Instantiate DataStore Objects
         Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
 
-        KeyFactory keyFactory = accountStore.newKeyFactory().setKind("Account");
+        KeyFactory keyFactory = accountStore.newKeyFactory()
+                    .addAncestors(PathElement.of("Family", "default"))
+                    .setKind("Account");
 
         System.out.println("Query");
         Query<Entity> query = Query.newEntityQueryBuilder()
