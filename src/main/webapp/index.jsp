@@ -19,22 +19,22 @@
   --%>
 <!-- [END_EXCLUDE] -->
 <html>
-<head>
-  <link href='//fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
-  <title>Hello App Engine Flexible</title>
-</head>
-<body>
-    <h1>Hello App Engine -- Flexible!</h1>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Join</title>
+    <!-- <link rel="stylesheet" href="style.css"> 
+    <script src="script.js"></script>-->
+  </head>
 
-  <p>This is <%= HelloInfo.getInfo() %>.</p>
-  <table>
-    <tr>
-      <td colspan="2" style="font-weight:bold;">Available Servlets:</td>
-    </tr>
-    <tr>
-      <td><a href='/hello'>The servlet</a></td>
-    </tr>
-  </table>
-
-</body>
-</html>
+    <body>
+        <h1>Welcome to FamCheck</h1>
+        <h2>Log In or Register</h2>
+        <a href="login.html">Log In</a>
+        <br>
+        <a href="register.html">Register</a>
+   
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </body>
+</html>     
