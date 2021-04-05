@@ -67,7 +67,7 @@ public class AccountServlet extends HttpServlet {
                 .build();
             accountStore.put(contactEntity);
             //redirect 
-            response.sendRedirect("registerpt2.html");
+            response.sendRedirect("register-family.html");
         }
     }
 }
