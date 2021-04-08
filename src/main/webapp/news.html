@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/news.css">
+    <title>News Feed</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="title"><i class="fa fa-newspaper-o" aria-hidden="true"></i>News Feed</div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <!--<li><a href="#">Home</a></li>-->
+            <!--<li><a href="#">About</a></li>-->
+            <li><a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>My Profile</a>
+            <!--My Profile Sub Menu-->
+             <div class="profile-sub-menu">
+              <ul>
+                <li><a href="/logout">Log Out</a></li><!--Log Out Link-->
+                </ul>
+             </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="status-update">
+    <h2>Update your Status:</h2>
+    <form action="/update-handler" method="POST">
+        <select name="dropdown">
+            <option value="Vaccinated" selected>Vaccinated</option>
+            <option value="Covid-19 Positive">Covid-19 Positive</option>
+        </select>
+    </form>
+
+    </div>
+   
+</body>
+</html>
