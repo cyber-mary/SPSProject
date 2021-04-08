@@ -31,51 +31,30 @@ public class FamilyServlet extends HttpServlet {
         System.out.println("Post /families");
         String familyNameValue = Jsoup.clean(request.getParameter("family_name"), Whitelist.none());
 
-        System.out.println("Instantiate DataStore");
-        // Instantiate DataStore Objects
-        Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
+        // Instantiate DataStore Object
+        Datastore db = DatastoreOptions.getDefaultInstance().getService();
 
-        KeyFactory keyFactory = accountStore.newKeyFactory().setKind("Account");
-
-        System.out.println("Query");
+        // Check if Family Exists
         Query<Entity> query = Query.newEntityQueryBuilder()
             .setKind("Family")
             .setFilter(CompositeFilter.and(
                 PropertyFilter.eq("name", familyNameValue)))
             .build();
+        QueryResults<Entity> family = db.run(query);
 
-        QueryResults<Entity> family = accountStore.run(query);
-
-        System.out.println(family);
-            
-        FullEntity contactEntity =
-            Entity.newBuilder(keyFactory.newKey())
-                .set("name", familyNameValue)
-                .set("members", ListValue.of(null))
-                .build();
-        accountStore.put(contactEntity);
-        //redirect 
-        response.sendRedirect("welcome.html");
-    }
-
-    @Override
-    public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-        System.out.println("Get /families");
-        String familyNameValue = Jsoup.clean(request.getParameter("family_name"), Whitelist.none());
-
-        System.out.println("Instantiate DataStore");
-        // Instantiate DataStore Objects
-        Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
-        
-        System.out.println("Query");
-        Query<Entity> query = Query.newEntityQueryBuilder()
-            .setKind("Family")
-            .setFilter(CompositeFilter.and(
-                PropertyFilter.eq("name", familyNameValue)))
-            .build();
-        
-        
-        // QueryResults<Entity> family = accountStore.run(query);
-
+        if (family.hasNext()){
+            response.setContentType("text/html;");
+            response.getWriter().println("Error: That Family already exists!")
+        } else {
+            KeyFactory keyFactory = db.newKeyFactory().setKind("Family");
+            FullEntity contactEntity =
+                Entity.newBuilder(keyFactory.newKey())
+                    .set("name", familyNameValue)
+                    .set("members", ListValue.of(null))
+                    .build();
+            db.put(contactEntity);
+            //redirect 
+            response.sendRedirect("welcome.html");
+        }
     }
 }
