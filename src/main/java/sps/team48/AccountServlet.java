@@ -52,11 +52,9 @@ public class AccountServlet extends HttpServlet {
 
         QueryResults<Entity> account = accountStore.run(query);
 
-        System.out.println(account);
-        if(!account.equals(null)){
+        if(account.hasNext()){
             response.setContentType("text/html;");
-            response.getWriter().println("Error: Already account with that email");
-            // response.getWriter().println(data);
+            response.getWriter().println("Error: Already account with that email. Use a different email or reset your password\n");
         } else {
             FullEntity contactEntity =
             Entity.newBuilder(keyFactory.newKey())
