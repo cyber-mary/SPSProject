@@ -67,16 +67,15 @@ public class FamilyServlet extends HttpServlet {
         // Instantiate DataStore Objects
         Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
         
-        
         System.out.println("Query");
-        Query<Key> query = Query.newKeyQueryBuilder()
+        Query<Entity> query = Query.newEntityQueryBuilder()
             .setKind("Family")
             .setFilter(CompositeFilter.and(
                 PropertyFilter.eq("name", familyNameValue)))
             .build();
         
         
-        QueryResults<Key> familyKey = accountStore.run(query);
+        // QueryResults<Entity> family = accountStore.run(query);
 
     }
 }
