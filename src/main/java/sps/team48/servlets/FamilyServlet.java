@@ -21,6 +21,8 @@ import com.google.cloud.datastore.StructuredQuery;
 import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 import com.google.cloud.datastore.DatastoreOptions;
+import java.util.LinkedList;
+import java.util.List;
 
 @WebServlet("/families")
 public class FamilyServlet extends HttpServlet {
@@ -44,7 +46,7 @@ public class FamilyServlet extends HttpServlet {
 
         if (family.hasNext()){
             response.setContentType("text/html;");
-            response.getWriter().println("Error: That Family already exists!")
+            response.getWriter().println("Error: That Family already exists!");
         } else {
             KeyFactory keyFactory = db.newKeyFactory().setKind("Family");
             FullEntity contactEntity =
@@ -54,7 +56,7 @@ public class FamilyServlet extends HttpServlet {
                     .build();
             db.put(contactEntity);
             //redirect 
-            response.sendRedirect("welcome.html");
+            response.sendRedirect("news.html");
         }
     }
 }
