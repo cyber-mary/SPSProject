@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
             response.getWriter().println("Error: Password or email is incorrect");
         } else{
             //redirect to newsfeed page
-            response.sendRedirect("welcome.html");
+            response.sendRedirect("news.html");
         }
 
     }
