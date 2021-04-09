@@ -1,6 +1,7 @@
 package sps.team48;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import com.google.cloud.datastore.StructuredQuery;
 import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.ListValue;
 
 @WebServlet("/account-handler")
 public class AccountServlet extends HttpServlet {
@@ -37,11 +39,9 @@ public class AccountServlet extends HttpServlet {
 
         System.out.println("Instantiate DataStore");
         // Instantiate DataStore Objects
-        Datastore accountStore = DatastoreOptions.getDefaultInstance().getService();
+        Datastore db = DatastoreOptions.getDefaultInstance().getService();
 
-        KeyFactory keyFactory = accountStore.newKeyFactory()
-                    .addAncestors(PathElement.of("Family", "default"))
-                    .setKind("Account");
+        KeyFactory keyFactory = db.newKeyFactory().setKind("Account");
 
         System.out.println("Query");
         Query<Entity> query = Query.newEntityQueryBuilder()
@@ -50,7 +50,7 @@ public class AccountServlet extends HttpServlet {
                 PropertyFilter.eq("email", emailValue)))
             .build();
 
-        QueryResults<Entity> account = accountStore.run(query);
+        QueryResults<Entity> account = db.run(query);
 
         if(account.hasNext()){
             response.setContentType("text/html;");
@@ -65,9 +65,9 @@ public class AccountServlet extends HttpServlet {
                 .set("age", ageValue)
                 .set("caught covid", caughtCovidValue)
                 .set("vaccination status", vaccinationStatusValue)
-                .set("families", ListValue.of(null))
+                .set("families", new ArrayList<>())
                 .build();
-            accountStore.put(contactEntity);
+            db.put(contactEntity);
             //redirect 
             response.sendRedirect("register-family.html");
         }

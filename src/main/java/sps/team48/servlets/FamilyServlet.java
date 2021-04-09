@@ -1,6 +1,7 @@
 package sps.team48;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,13 +45,13 @@ public class FamilyServlet extends HttpServlet {
 
         if (family.hasNext()){
             response.setContentType("text/html;");
-            response.getWriter().println("Error: That Family already exists!")
+            response.getWriter().println("Error: That Family already exists!");
         } else {
             KeyFactory keyFactory = db.newKeyFactory().setKind("Family");
             FullEntity contactEntity =
                 Entity.newBuilder(keyFactory.newKey())
                     .set("name", familyNameValue)
-                    .set("members", ListValue.of(null))
+                    .set("members", new ArrayList<>())
                     .build();
             db.put(contactEntity);
             //redirect 
