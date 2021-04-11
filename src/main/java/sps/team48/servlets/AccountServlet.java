@@ -1,4 +1,4 @@
-package sps.team48;
+package sps.team48.servlets;
 
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -66,7 +66,7 @@ public class AccountServlet extends HttpServlet {
                 .set("age", ageValue)
                 .set("caught covid", caughtCovidValue)
                 .set("vaccination status", vaccinationStatusValue)
-                .set("families", ListValue.of(null))
+                .set("families", ListValue.of(""))
                 .build();
             accountStore.put(contactEntity);
             //redirect 
