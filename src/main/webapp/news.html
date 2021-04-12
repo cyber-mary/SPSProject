@@ -4,53 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="css/news.css">
     <script src="js/script.js"></script>
     <title>News Feed</title>
 </head>
 <body onload="loadTasks()">
     <img src="https://970-cs-276024311721-default.cs-us-west1-olvl.cloudshell.dev/mini-browser/home/mmendoza/software-product-sprint/sps-team48-project/src/main/webapp/images/newsfeed.png" alt="FamCheck Newsfeed" width="100%" height="300px">
-    <nav class="navbar">
-        <div class="title"><i class="fa fa-newspaper-o" aria-hidden="true"></i>News Feed</div>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <!--<li><a href="#">Home</a></li>-->
-            <!--<li><a href="#">About</a></li>-->
-            <li><a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>My Profile</a>
-            <!--My Profile Sub Menu-->
-             <div class="profile-sub-menu">
-              <ul>
-                <li><a href="/logout">Log Out</a></li><!--Log Out Link-->
-                </ul>
-             </div>
-            </li>
-          </ul>
+    <ul class="nav nav-pills justify-content-end">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">My Profile</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.jsp">Log Out</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div id="status-content" class="container-fluid"> 
+        <div class="status-update">
+        <h2>Update your Status:</h2>
         </div>
-      </nav>
+        <form method="POST" action="/new-task">
+            <select name="title">
+                <option value="Vaccinated" selected>Vaccinated</option>
+                <option value="Covid-19 Positive">Covid-19 Positive</option>
+            </select>
+            <br />
+            <button>Submit</button>
+        </form>
+        <!-- </div> -->
+        <hr />
 
-    <div class="status-update">
-    <h2>Update your Status:</h2>
+        <ul id="task-list"></ul>
     </div>
-    <form method="POST" action="/new-task">
-        <select name="title">
-            <option value="Vaccinated" selected>Vaccinated</option>
-            <option value="Covid-19 Positive">Covid-19 Positive</option>
-        </select>
-        <br />
-        <button>Submit</button>
-    </form>
-    <!-- </div> -->
-    <hr />
-
-    <ul id="task-list"></ul>
 
 
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
