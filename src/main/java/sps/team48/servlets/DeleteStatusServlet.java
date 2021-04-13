@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet responsible for deleting tasks. */
-@WebServlet("/delete-task")
-public class DeleteTaskServlet extends HttpServlet {
+/** Servlet responsible for deleting status. */
+@WebServlet("/delete-status")
+public class DeleteStatusServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     long id = Long.parseLong(request.getParameter("id"));
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
-    Key taskEntityKey = keyFactory.newKey(id);
-    datastore.delete(taskEntityKey);
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Status");
+    Key statusEntityKey = keyFactory.newKey(id);
+    datastore.delete(statusEntityKey);
   }
 }

@@ -9,7 +9,7 @@
     <script src="js/script.js"></script>
     <title>News Feed</title>
 </head>
-<body onload="loadTasks()">
+<body onload="loadStatuses()">
     <nav class="navbar">
         <div class="title"><i class="fa fa-newspaper-o" aria-hidden="true"></i>News Feed</div>
         <a href="#" class="toggle-button">
@@ -36,7 +36,7 @@
     <div class="status-update">
     <h2>Update your Status:</h2>
     </div>
-    <form method="POST" action="/new-task">
+    <form method="POST" action="/new-status">
         <select name="title">
             <option value="Vaccinated" selected>Vaccinated</option>
             <option value="Covid-19 Positive">Covid-19 Positive</option>
@@ -47,7 +47,7 @@
     <!-- </div> -->
     <hr />
 
-    <ul id="task-list"></ul>
+    <ul id="status-list"></ul>
 
 
    

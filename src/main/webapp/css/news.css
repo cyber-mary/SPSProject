@@ -139,11 +139,11 @@
    
 }*/
 
-#task-list {
+#status-list {
     list-style-type: none;
   }
   
-  .task {
+  .status {
     border: thin solid black;
     display: flex;
     margin: 10px;
@@ -151,7 +151,7 @@
     width: 300px;
   }
   
-  .task span {
+  .status span {
     flex-grow: 1;
   }
 

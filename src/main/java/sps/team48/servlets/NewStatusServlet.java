@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
-/** Servlet responsible for creating new tasks. */
-@WebServlet("/new-task")
-public class NewTaskServlet extends HttpServlet {
+/** Servlet responsible for creating new statuses. */
+@WebServlet("/new-status")
+public class NewStatusServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -24,13 +24,13 @@ public class NewTaskServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
-    FullEntity taskEntity =
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Status");
+    FullEntity statusEntity =
         Entity.newBuilder(keyFactory.newKey())
             .set("title", title)
             .set("timestamp", timestamp)
             .build();
-    datastore.put(taskEntity);
+    datastore.put(statusEntity);
 
     response.sendRedirect("/news.html");
   }
