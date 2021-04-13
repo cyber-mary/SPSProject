@@ -1,37 +1,37 @@
-function loadTasks() {
-  fetch('/list-tasks').then(response => response.json()).then((tasks) => {
-    const taskListElement = document.getElementById('task-list');
-    tasks.forEach((task) => {
-      taskListElement.appendChild(createTaskElement(task));
+function loadStatuses() {
+  fetch('/list-statuses').then(response => response.json()).then((statuses) => {
+    const statusListElement = document.getElementById('status-list');
+    statuses.forEach((status) => {
+      statusListElement.appendChild(createStatusElement(status));
     })
   });
 }
 
-/** Creates an element that represents a task, including its delete button. */
-function createTaskElement(task) {
-  const taskElement = document.createElement('li');
-  taskElement.className = 'task';
+/** Creates an element that represents a status, including its delete button. */
+function createStatusElement(status) {
+  const statusElement = document.createElement('li');
+  statusElement.className = 'status';
 
   const titleElement = document.createElement('span');
-  titleElement.innerText = task.title;
+  titleElement.innerText = status.title;
 
   const deleteButtonElement = document.createElement('button');
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
-    deleteTask(task);
+    deleteStatus(status);
 
-    // Remove the task from the DOM.
-    taskElement.remove();
+    // Remove the status from the DOM.
+    statusElement.remove();
   });
 
-  taskElement.appendChild(titleElement);
-  taskElement.appendChild(deleteButtonElement);
-  return taskElement;
+  statusElement.appendChild(titleElement);
+  statusElement.appendChild(deleteButtonElement);
+  return statusElement;
 }
 
-/** Tells the server to delete the task. */
-function deleteTask(task) {
+/** Tells the server to delete the status. */
+function deleteStatus(status) {
   const params = new URLSearchParams();
-  params.append('id', task.id);
-  fetch('/delete-task', {method: 'POST', body: params});
+  params.append('id', status.id);
+  fetch('/delete-status', {method: 'POST', body: params});
 }

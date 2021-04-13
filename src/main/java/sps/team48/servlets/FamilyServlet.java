@@ -1,6 +1,7 @@
 package sps.team48.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,7 @@ public class FamilyServlet extends HttpServlet {
             FullEntity contactEntity =
                 Entity.newBuilder(keyFactory.newKey())
                     .set("name", familyNameValue)
-                    .set("members", ListValue.of(null))
+                    .set("members", new ArrayList<>())
                     .build();
             db.put(contactEntity);
             //redirect 
