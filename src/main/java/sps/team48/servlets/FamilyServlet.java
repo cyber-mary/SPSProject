@@ -1,4 +1,4 @@
-package sps.team48;
+package sps.team48.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;

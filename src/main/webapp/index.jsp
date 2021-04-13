@@ -22,16 +22,16 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/main/webapp/css/style.css"> 
+    <link rel="stylesheet" href="css/index.css"> 
     <meta charset="UTF-8">
     <title>FamCheck</title>
-    <!--  <script src="script.js"></script>-->
   </head>
 
     <body>
         <img src="https://970-cs-276024311721-default.cs-us-west1-olvl.cloudshell.dev/mini-browser/home/mmendoza/software-product-sprint/sps-team48-project/src/main/webapp/images/FamCheck.png" alt="Welcome to FamCheck" width="100%" height="300px">
-        <div id = "homepage" style="align-content: center;">
-            <h2>Log In or Register</h2>
+        <div id = "homepage" class="container-fluid">
+            <h2>Log In or Register</h2> 
+            <br>
             <a class="btn btn-primary btn-lg" href="login.html" role="button">Log In</a>
             <br> <br>
             <a class="btn btn-primary btn-lg" href="register.html" role="button">Register</a>
