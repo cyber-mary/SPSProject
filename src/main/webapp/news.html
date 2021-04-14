@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="css/news.css">
     <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>News Feed</title>
 </head>
 <body onload="loadTasks()">
@@ -37,7 +38,56 @@
         <ul id="task-list"></ul>
     </div>
 
+    
+    <table class="table table-dark">
+        <tr class="bg-info">
+            <th>Name</th>
+            <th>Status</th>
+            <th>Group Name/ ID</th>
+            
+        </tr>
 
+        <tbody id="statusTable">
+
+        </tbody>
+    </table>
+    <script>
+        //Sample JSON response from DisplayFamilyServlet
+        var groupArray = [
+    {'name':'Larry', 'status':'Vaccinated',         'group':'Smith'},
+    {'name':'Moe',   'status':'Covid-19 Positive',  'group':'Smith'},
+    {'name':'Currly','status':'Vaccinated',         'group':'Adams'}
+]
+//Retrieve JSON object from Servlet URL and set it to groupArray
+//Possibly use a different method
+/*$.ajax({
+    method:'GET',
+    url:'/group-details',
+    success:function(response){
+        groupArray = response.data
+        buildTable(groupArray)
+        console.log(groupArray)
+    }
+})
+*/
+//Function that builds the content of table rows with JSON object as parameter
+function buildTable(data){
+    var table = document.getElementById('statusTable')
+
+    for(var i=0; i < data.length; i++){
+        var row = `<tr>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].status}</td>
+                        <td>${data[i].group}</td>
+                </tr>`
+        table.innerHTML += row
+    }
+}
+
+buildTable(groupArray)
+
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
