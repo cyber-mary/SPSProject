@@ -27,7 +27,6 @@ import java.util.List;
 
 @WebServlet("/family")
 public class FamilyServlet extends HttpServlet {
-
     @Override
     public void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         // Parse input + clean it

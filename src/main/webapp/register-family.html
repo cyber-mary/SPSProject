@@ -9,11 +9,12 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script type="text/javascript" src="js/register.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/registerFamily.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="init();">
+<body>
   <div class="container centered-form" id="content">
     <h2 style="margin-bottom: 20px;"><b>Welcome to FamCheck! Let's begin by collecting some information. (2/2)</h2>
     <p>Has another member of your family created a family group or would you like to create a family group?</p>
@@ -42,9 +43,10 @@
     </div>
     <div class="collapse card card-body" id="createFam">
       Okay let's create a family!
-      <form action="/family" method="post" class="form-group">
+      <form action="family" method="post" class="form-group" id="create-fam-form">
         <input type="text" name="family_name" class="form-control" placeholder="Family Name" id="create-family-name">
         <input class="btn btn-primary" value="Confirm Family Creation" type="submit">
+      </form>
     </div>
   </div>
 
