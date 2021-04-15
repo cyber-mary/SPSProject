@@ -32,4 +32,13 @@ function buildTable(data){
         table.innerHTML += row
     }
   }
-  
+function displayTable(){
+    //Uses a harcoded JSON object in place of a Servlet
+    var groupArray = [
+      {'name':'Larry', 'status':'Vaccinated',         'group':'Smith'},
+      {'name':'Moe',   'status':'Covid-19 Positive',  'group':'Smith'},
+      {'name':'Currly','status':'Vaccinated',         'group':'Adams'},
+      {'name':'Joey','status':'Vaccinated',         'group':'Adams'}
+    ]
+    buildTable(groupArray);
+  }
