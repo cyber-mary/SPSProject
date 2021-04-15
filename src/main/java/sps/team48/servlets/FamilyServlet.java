@@ -25,13 +25,13 @@ import com.google.cloud.datastore.DatastoreOptions;
 import java.util.LinkedList;
 import java.util.List;
 
-@WebServlet("/families")
+@WebServlet("/family")
 public class FamilyServlet extends HttpServlet {
 
     @Override
     public void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         // Parse input + clean it
-        System.out.println("Post /families");
+        System.out.println("Post /family");
         String familyNameValue = Jsoup.clean(request.getParameter("family_name"), Whitelist.none());
 
         // Instantiate DataStore Object
